@@ -13,12 +13,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/admin', function () {
-    return view('admin.dashboard');
-})->middleware(['auth', 'verified'])->name('admin.dashboard');
+
+
+
+
+
+
+Route::middleware(['auth'])
+    ->prefix('admin')
+    ->name('admin.')
+    ->group(function () {
+
+
+        Route::get('/', function () {
+            return view('welcome');
+        });
+
+        Route::get('/admin', function () {
+            return view('admin.dashboard');
+        })->middleware(['auth', 'verified'])->name('dashboard');
+    });
 
 require __DIR__ . '/auth.php';
