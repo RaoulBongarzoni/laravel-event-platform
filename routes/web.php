@@ -17,7 +17,9 @@ use Illuminate\Support\Facades\Route;
 
 
 
-
+Route::get('/', function () {
+    return view('welcome');
+});
 
 
 Route::middleware(['auth'])
@@ -27,10 +29,6 @@ Route::middleware(['auth'])
 
 
         Route::get('/', function () {
-            return view('welcome');
-        });
-
-        Route::get('/admin', function () {
             return view('admin.dashboard');
         })->middleware(['auth', 'verified'])->name('dashboard');
     });
