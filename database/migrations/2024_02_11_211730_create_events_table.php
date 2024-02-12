@@ -17,9 +17,13 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger("user_id")->nullable();      //uno a molti
             $table->foreign('user_id')->references("id")->on('users')->nullOnDelete();
+
+
+
+
             $table->string('name');
             $table->string('description');
-            /*             $table->string('location');     molti a molti?*/
+
 
             $table->date("date");
 

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EventController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,8 +30,14 @@ Route::middleware(['auth'])
 
 
         Route::get('/', function () {
-            return view('admin.dashboard');
-        })->middleware(['auth', 'verified'])->name('dashboard');
+            return view('admin.events.index');
+        })->middleware(['auth', 'verified'])->name('index');
+
+
+        Route::get('/', [EventController::class, 'index'])->name('events');
+
+        // Admin Post CRUD
+        Route::resource('events', EventController::class);
     });
 
 require __DIR__ . '/auth.php';

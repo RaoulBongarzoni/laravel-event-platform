@@ -21,7 +21,8 @@ class EventSeeder extends Seeder
 
             $newEvent = new Event();
             $newEvent->name = $faker->sentence(3);
-            $newEvent->$newEvent->description = $faker->sentence(20);
+            $newEvent->description = $faker->sentence(20);
+
 
             $newEvent->date = $faker->date();
             $newEvent->save();
